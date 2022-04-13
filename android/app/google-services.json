@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "208449019232",
+    "project_id": "car-catalog-80840",
+    "storage_bucket": "car-catalog-80840.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208449019232:android:cb7936c98072565b9a9205",
+        "android_client_info": {
+          "package_name": "com.example.car_catalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208449019232-ngs4hqic6vhl09ljfbqj3310de9q4jqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo2XNRyM29U-U52_Yg1GGsFuPonBSfw18"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208449019232-ngs4hqic6vhl09ljfbqj3310de9q4jqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
