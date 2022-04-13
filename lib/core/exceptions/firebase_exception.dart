@@ -1,1 +1,1 @@
-class FirebaseException implements Exception {}
+class FirebaseRepositoryException implements Exception {}

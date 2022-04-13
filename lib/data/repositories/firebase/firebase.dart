@@ -1,11 +1,11 @@
 import 'dart:io';
 
+import 'package:car_catalog/core/exceptions/firebase_exception.dart';
 import 'package:car_catalog/data/models/car_model/car_model.dart';
 import 'package:car_catalog/data/repositories/firebase/ifirebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
-import '../../../domain/car/car.dart';
 
 @lazySingleton
 class FirebaseRepository implements IFirebaseRepository {
@@ -29,8 +29,8 @@ class FirebaseRepository implements IFirebaseRepository {
         'image': b,
         'manufacturYear': carModel.manufacturYear,
       });
-    } on FirebaseException catch (_) {
-      rethrow;
+    } on Exception catch (_) {
+      throw FirebaseRepositoryException();
     }
   }
 
@@ -40,8 +40,8 @@ class FirebaseRepository implements IFirebaseRepository {
       final result =
           await _firebaseClient.collection(_carPostsCollectionKey).get();
       return result.docs.map((e) => CarModel.fromJson(e.data())).toList();
-    } on FirebaseException catch (_) {
-      rethrow;
+    } on Exception catch (_) {
+      throw FirebaseRepositoryException();
     }
   }
 

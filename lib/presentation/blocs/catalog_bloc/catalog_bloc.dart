@@ -33,7 +33,6 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
 
       FirebaseRepository(FirebaseStorage.instance, FirebaseFirestore.instance)
           .createCarPost(carModel);
-      // emit(CatalogState.loaded(carList: [car]));
     });
   }
 }
