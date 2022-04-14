@@ -663,6 +663,29 @@ class _$CatalogEventTearOff {
       image: image,
     );
   }
+
+  DeleteCarPost deleteCarPost({required String id}) {
+    return DeleteCarPost(
+      id: id,
+    );
+  }
+
+  UpdateCarPost updateCarPost(
+      {required String id,
+      required String model,
+      required String manufacturer,
+      required String carClass,
+      required String bodyType,
+      required String manufacturYear}) {
+    return UpdateCarPost(
+      id: id,
+      model: model,
+      manufacturer: manufacturer,
+      carClass: carClass,
+      bodyType: bodyType,
+      manufacturYear: manufacturYear,
+    );
+  }
 }
 
 /// @nodoc
@@ -681,6 +704,10 @@ mixin _$CatalogEvent {
             String manufacturYear,
             String image)
         addCarPost,
+    required TResult Function(String id) deleteCarPost,
+    required TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)
+        updateCarPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -689,6 +716,10 @@ mixin _$CatalogEvent {
     TResult Function(String model, String manufacturer, String carClass,
             String bodyType, String manufacturYear, String image)?
         addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -697,6 +728,10 @@ mixin _$CatalogEvent {
     TResult Function(String model, String manufacturer, String carClass,
             String bodyType, String manufacturYear, String image)?
         addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -704,18 +739,24 @@ mixin _$CatalogEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPosts value) getPosts,
     required TResult Function(AddCarPost value) addCarPost,
+    required TResult Function(DeleteCarPost value) deleteCarPost,
+    required TResult Function(UpdateCarPost value) updateCarPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPosts value)? getPosts,
     TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPosts value)? getPosts,
     TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -784,6 +825,10 @@ class _$GetPosts implements GetPosts {
             String manufacturYear,
             String image)
         addCarPost,
+    required TResult Function(String id) deleteCarPost,
+    required TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)
+        updateCarPost,
   }) {
     return getPosts();
   }
@@ -795,6 +840,10 @@ class _$GetPosts implements GetPosts {
     TResult Function(String model, String manufacturer, String carClass,
             String bodyType, String manufacturYear, String image)?
         addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
   }) {
     return getPosts?.call();
   }
@@ -806,6 +855,10 @@ class _$GetPosts implements GetPosts {
     TResult Function(String model, String manufacturer, String carClass,
             String bodyType, String manufacturYear, String image)?
         addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
     required TResult orElse(),
   }) {
     if (getPosts != null) {
@@ -819,6 +872,8 @@ class _$GetPosts implements GetPosts {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPosts value) getPosts,
     required TResult Function(AddCarPost value) addCarPost,
+    required TResult Function(DeleteCarPost value) deleteCarPost,
+    required TResult Function(UpdateCarPost value) updateCarPost,
   }) {
     return getPosts(this);
   }
@@ -828,6 +883,8 @@ class _$GetPosts implements GetPosts {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPosts value)? getPosts,
     TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
   }) {
     return getPosts?.call(this);
   }
@@ -837,6 +894,8 @@ class _$GetPosts implements GetPosts {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPosts value)? getPosts,
     TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
     required TResult orElse(),
   }) {
     if (getPosts != null) {
@@ -982,6 +1041,10 @@ class _$AddCarPost implements AddCarPost {
             String manufacturYear,
             String image)
         addCarPost,
+    required TResult Function(String id) deleteCarPost,
+    required TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)
+        updateCarPost,
   }) {
     return addCarPost(
         model, manufacturer, carClass, bodyType, manufacturYear, image);
@@ -994,6 +1057,10 @@ class _$AddCarPost implements AddCarPost {
     TResult Function(String model, String manufacturer, String carClass,
             String bodyType, String manufacturYear, String image)?
         addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
   }) {
     return addCarPost?.call(
         model, manufacturer, carClass, bodyType, manufacturYear, image);
@@ -1006,6 +1073,10 @@ class _$AddCarPost implements AddCarPost {
     TResult Function(String model, String manufacturer, String carClass,
             String bodyType, String manufacturYear, String image)?
         addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
     required TResult orElse(),
   }) {
     if (addCarPost != null) {
@@ -1020,6 +1091,8 @@ class _$AddCarPost implements AddCarPost {
   TResult map<TResult extends Object?>({
     required TResult Function(GetPosts value) getPosts,
     required TResult Function(AddCarPost value) addCarPost,
+    required TResult Function(DeleteCarPost value) deleteCarPost,
+    required TResult Function(UpdateCarPost value) updateCarPost,
   }) {
     return addCarPost(this);
   }
@@ -1029,6 +1102,8 @@ class _$AddCarPost implements AddCarPost {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(GetPosts value)? getPosts,
     TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
   }) {
     return addCarPost?.call(this);
   }
@@ -1038,6 +1113,8 @@ class _$AddCarPost implements AddCarPost {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetPosts value)? getPosts,
     TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
     required TResult orElse(),
   }) {
     if (addCarPost != null) {
@@ -1064,5 +1141,403 @@ abstract class AddCarPost implements CatalogEvent {
   String get image;
   @JsonKey(ignore: true)
   $AddCarPostCopyWith<AddCarPost> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DeleteCarPostCopyWith<$Res> {
+  factory $DeleteCarPostCopyWith(
+          DeleteCarPost value, $Res Function(DeleteCarPost) then) =
+      _$DeleteCarPostCopyWithImpl<$Res>;
+  $Res call({String id});
+}
+
+/// @nodoc
+class _$DeleteCarPostCopyWithImpl<$Res> extends _$CatalogEventCopyWithImpl<$Res>
+    implements $DeleteCarPostCopyWith<$Res> {
+  _$DeleteCarPostCopyWithImpl(
+      DeleteCarPost _value, $Res Function(DeleteCarPost) _then)
+      : super(_value, (v) => _then(v as DeleteCarPost));
+
+  @override
+  DeleteCarPost get _value => super._value as DeleteCarPost;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(DeleteCarPost(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteCarPost implements DeleteCarPost {
+  _$DeleteCarPost({required this.id});
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.deleteCarPost(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is DeleteCarPost &&
+            const DeepCollectionEquality().equals(other.id, id));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+
+  @JsonKey(ignore: true)
+  @override
+  $DeleteCarPostCopyWith<DeleteCarPost> get copyWith =>
+      _$DeleteCarPostCopyWithImpl<DeleteCarPost>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPosts,
+    required TResult Function(
+            String model,
+            String manufacturer,
+            String carClass,
+            String bodyType,
+            String manufacturYear,
+            String image)
+        addCarPost,
+    required TResult Function(String id) deleteCarPost,
+    required TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)
+        updateCarPost,
+  }) {
+    return deleteCarPost(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getPosts,
+    TResult Function(String model, String manufacturer, String carClass,
+            String bodyType, String manufacturYear, String image)?
+        addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
+  }) {
+    return deleteCarPost?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPosts,
+    TResult Function(String model, String manufacturer, String carClass,
+            String bodyType, String manufacturYear, String image)?
+        addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
+    required TResult orElse(),
+  }) {
+    if (deleteCarPost != null) {
+      return deleteCarPost(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPosts value) getPosts,
+    required TResult Function(AddCarPost value) addCarPost,
+    required TResult Function(DeleteCarPost value) deleteCarPost,
+    required TResult Function(UpdateCarPost value) updateCarPost,
+  }) {
+    return deleteCarPost(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetPosts value)? getPosts,
+    TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
+  }) {
+    return deleteCarPost?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPosts value)? getPosts,
+    TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
+    required TResult orElse(),
+  }) {
+    if (deleteCarPost != null) {
+      return deleteCarPost(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteCarPost implements CatalogEvent {
+  factory DeleteCarPost({required String id}) = _$DeleteCarPost;
+
+  String get id;
+  @JsonKey(ignore: true)
+  $DeleteCarPostCopyWith<DeleteCarPost> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdateCarPostCopyWith<$Res> {
+  factory $UpdateCarPostCopyWith(
+          UpdateCarPost value, $Res Function(UpdateCarPost) then) =
+      _$UpdateCarPostCopyWithImpl<$Res>;
+  $Res call(
+      {String id,
+      String model,
+      String manufacturer,
+      String carClass,
+      String bodyType,
+      String manufacturYear});
+}
+
+/// @nodoc
+class _$UpdateCarPostCopyWithImpl<$Res> extends _$CatalogEventCopyWithImpl<$Res>
+    implements $UpdateCarPostCopyWith<$Res> {
+  _$UpdateCarPostCopyWithImpl(
+      UpdateCarPost _value, $Res Function(UpdateCarPost) _then)
+      : super(_value, (v) => _then(v as UpdateCarPost));
+
+  @override
+  UpdateCarPost get _value => super._value as UpdateCarPost;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? model = freezed,
+    Object? manufacturer = freezed,
+    Object? carClass = freezed,
+    Object? bodyType = freezed,
+    Object? manufacturYear = freezed,
+  }) {
+    return _then(UpdateCarPost(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      model: model == freezed
+          ? _value.model
+          : model // ignore: cast_nullable_to_non_nullable
+              as String,
+      manufacturer: manufacturer == freezed
+          ? _value.manufacturer
+          : manufacturer // ignore: cast_nullable_to_non_nullable
+              as String,
+      carClass: carClass == freezed
+          ? _value.carClass
+          : carClass // ignore: cast_nullable_to_non_nullable
+              as String,
+      bodyType: bodyType == freezed
+          ? _value.bodyType
+          : bodyType // ignore: cast_nullable_to_non_nullable
+              as String,
+      manufacturYear: manufacturYear == freezed
+          ? _value.manufacturYear
+          : manufacturYear // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCarPost implements UpdateCarPost {
+  _$UpdateCarPost(
+      {required this.id,
+      required this.model,
+      required this.manufacturer,
+      required this.carClass,
+      required this.bodyType,
+      required this.manufacturYear});
+
+  @override
+  final String id;
+  @override
+  final String model;
+  @override
+  final String manufacturer;
+  @override
+  final String carClass;
+  @override
+  final String bodyType;
+  @override
+  final String manufacturYear;
+
+  @override
+  String toString() {
+    return 'CatalogEvent.updateCarPost(id: $id, model: $model, manufacturer: $manufacturer, carClass: $carClass, bodyType: $bodyType, manufacturYear: $manufacturYear)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UpdateCarPost &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.model, model) &&
+            const DeepCollectionEquality()
+                .equals(other.manufacturer, manufacturer) &&
+            const DeepCollectionEquality().equals(other.carClass, carClass) &&
+            const DeepCollectionEquality().equals(other.bodyType, bodyType) &&
+            const DeepCollectionEquality()
+                .equals(other.manufacturYear, manufacturYear));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(model),
+      const DeepCollectionEquality().hash(manufacturer),
+      const DeepCollectionEquality().hash(carClass),
+      const DeepCollectionEquality().hash(bodyType),
+      const DeepCollectionEquality().hash(manufacturYear));
+
+  @JsonKey(ignore: true)
+  @override
+  $UpdateCarPostCopyWith<UpdateCarPost> get copyWith =>
+      _$UpdateCarPostCopyWithImpl<UpdateCarPost>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPosts,
+    required TResult Function(
+            String model,
+            String manufacturer,
+            String carClass,
+            String bodyType,
+            String manufacturYear,
+            String image)
+        addCarPost,
+    required TResult Function(String id) deleteCarPost,
+    required TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)
+        updateCarPost,
+  }) {
+    return updateCarPost(
+        id, model, manufacturer, carClass, bodyType, manufacturYear);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? getPosts,
+    TResult Function(String model, String manufacturer, String carClass,
+            String bodyType, String manufacturYear, String image)?
+        addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
+  }) {
+    return updateCarPost?.call(
+        id, model, manufacturer, carClass, bodyType, manufacturYear);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPosts,
+    TResult Function(String model, String manufacturer, String carClass,
+            String bodyType, String manufacturYear, String image)?
+        addCarPost,
+    TResult Function(String id)? deleteCarPost,
+    TResult Function(String id, String model, String manufacturer,
+            String carClass, String bodyType, String manufacturYear)?
+        updateCarPost,
+    required TResult orElse(),
+  }) {
+    if (updateCarPost != null) {
+      return updateCarPost(
+          id, model, manufacturer, carClass, bodyType, manufacturYear);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetPosts value) getPosts,
+    required TResult Function(AddCarPost value) addCarPost,
+    required TResult Function(DeleteCarPost value) deleteCarPost,
+    required TResult Function(UpdateCarPost value) updateCarPost,
+  }) {
+    return updateCarPost(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(GetPosts value)? getPosts,
+    TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
+  }) {
+    return updateCarPost?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetPosts value)? getPosts,
+    TResult Function(AddCarPost value)? addCarPost,
+    TResult Function(DeleteCarPost value)? deleteCarPost,
+    TResult Function(UpdateCarPost value)? updateCarPost,
+    required TResult orElse(),
+  }) {
+    if (updateCarPost != null) {
+      return updateCarPost(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateCarPost implements CatalogEvent {
+  factory UpdateCarPost(
+      {required String id,
+      required String model,
+      required String manufacturer,
+      required String carClass,
+      required String bodyType,
+      required String manufacturYear}) = _$UpdateCarPost;
+
+  String get id;
+  String get model;
+  String get manufacturer;
+  String get carClass;
+  String get bodyType;
+  String get manufacturYear;
+  @JsonKey(ignore: true)
+  $UpdateCarPostCopyWith<UpdateCarPost> get copyWith =>
       throw _privateConstructorUsedError;
 }

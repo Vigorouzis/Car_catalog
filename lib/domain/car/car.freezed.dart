@@ -19,13 +19,15 @@ class _$CarTearOff {
   const _$CarTearOff();
 
   _Car call(
-      {required String model,
+      {required String id,
+      required String model,
       required String manufacturer,
       required String carClass,
       required String bodyType,
       required String image,
       required String manufacturYear}) {
     return _Car(
+      id: id,
       model: model,
       manufacturer: manufacturer,
       carClass: carClass,
@@ -41,6 +43,7 @@ const $Car = _$CarTearOff();
 
 /// @nodoc
 mixin _$Car {
+  String get id => throw _privateConstructorUsedError;
   String get model => throw _privateConstructorUsedError;
   String get manufacturer => throw _privateConstructorUsedError;
   String get carClass => throw _privateConstructorUsedError;
@@ -57,7 +60,8 @@ abstract class $CarCopyWith<$Res> {
   factory $CarCopyWith(Car value, $Res Function(Car) then) =
       _$CarCopyWithImpl<$Res>;
   $Res call(
-      {String model,
+      {String id,
+      String model,
       String manufacturer,
       String carClass,
       String bodyType,
@@ -75,6 +79,7 @@ class _$CarCopyWithImpl<$Res> implements $CarCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? model = freezed,
     Object? manufacturer = freezed,
     Object? carClass = freezed,
@@ -83,6 +88,10 @@ class _$CarCopyWithImpl<$Res> implements $CarCopyWith<$Res> {
     Object? manufacturYear = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       model: model == freezed
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -117,7 +126,8 @@ abstract class _$CarCopyWith<$Res> implements $CarCopyWith<$Res> {
       __$CarCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String model,
+      {String id,
+      String model,
       String manufacturer,
       String carClass,
       String bodyType,
@@ -136,6 +146,7 @@ class __$CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? model = freezed,
     Object? manufacturer = freezed,
     Object? carClass = freezed,
@@ -144,6 +155,10 @@ class __$CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res>
     Object? manufacturYear = freezed,
   }) {
     return _then(_Car(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       model: model == freezed
           ? _value.model
           : model // ignore: cast_nullable_to_non_nullable
@@ -176,13 +191,16 @@ class __$CarCopyWithImpl<$Res> extends _$CarCopyWithImpl<$Res>
 
 class _$_Car implements _Car {
   const _$_Car(
-      {required this.model,
+      {required this.id,
+      required this.model,
       required this.manufacturer,
       required this.carClass,
       required this.bodyType,
       required this.image,
       required this.manufacturYear});
 
+  @override
+  final String id;
   @override
   final String model;
   @override
@@ -198,7 +216,7 @@ class _$_Car implements _Car {
 
   @override
   String toString() {
-    return 'Car(model: $model, manufacturer: $manufacturer, carClass: $carClass, bodyType: $bodyType, image: $image, manufacturYear: $manufacturYear)';
+    return 'Car(id: $id, model: $model, manufacturer: $manufacturer, carClass: $carClass, bodyType: $bodyType, image: $image, manufacturYear: $manufacturYear)';
   }
 
   @override
@@ -206,6 +224,7 @@ class _$_Car implements _Car {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _Car &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.model, model) &&
             const DeepCollectionEquality()
                 .equals(other.manufacturer, manufacturer) &&
@@ -219,6 +238,7 @@ class _$_Car implements _Car {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(model),
       const DeepCollectionEquality().hash(manufacturer),
       const DeepCollectionEquality().hash(carClass),
@@ -234,13 +254,16 @@ class _$_Car implements _Car {
 
 abstract class _Car implements Car {
   const factory _Car(
-      {required String model,
+      {required String id,
+      required String model,
       required String manufacturer,
       required String carClass,
       required String bodyType,
       required String image,
       required String manufacturYear}) = _$_Car;
 
+  @override
+  String get id;
   @override
   String get model;
   @override

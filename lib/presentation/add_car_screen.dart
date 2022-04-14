@@ -1,14 +1,17 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:io';
 
+import 'package:car_catalog/domain/car/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'blocs/catalog_bloc/catalog_bloc.dart';
 
 class AddCarScreen extends StatefulWidget {
-  const AddCarScreen({Key? key}) : super(key: key);
+  final Car? _car;
+
+  const AddCarScreen({Key? key, Car? car})
+      : _car = car,
+        super(key: key);
 
   @override
   State<AddCarScreen> createState() => _AddCarScreenState();
@@ -24,11 +27,25 @@ class _AddCarScreenState extends State<AddCarScreen> {
   @override
   void initState() {
     super.initState();
-    _modelController = TextEditingController();
-    _manufacturerController = TextEditingController();
-    _carClassController = TextEditingController();
-    _bodyTypeController = TextEditingController();
-    _manufacturYearController = TextEditingController();
+    _modelController = TextEditingController(text: widget._car?.model ?? '');
+    _manufacturerController =
+        TextEditingController(text: widget._car?.manufacturer ?? '');
+    _carClassController =
+        TextEditingController(text: widget._car?.carClass ?? '');
+    _bodyTypeController =
+        TextEditingController(text: widget._car?.bodyType ?? '');
+    _manufacturYearController =
+        TextEditingController(text: widget._car?.manufacturYear ?? '');
+  }
+
+  @override
+  void dispose() {
+    _modelController.dispose();
+    _manufacturerController.dispose();
+    _carClassController.dispose();
+    _bodyTypeController.dispose();
+    _manufacturYearController.dispose();
+    super.dispose();
   }
 
   File? imageFile;
@@ -42,7 +59,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
         imageFile = File(image.path);
       });
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('No image selected'),
         duration: Duration(seconds: 1),
       ));
@@ -61,7 +78,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 height: 350,
                 child: imageFile == null
                     ? IconButton(
-                        icon: Icon(Icons.add),
+                        icon: const Icon(Icons.add),
                         onPressed: () {
                           _imagePick();
                         })
@@ -69,51 +86,68 @@ class _AddCarScreenState extends State<AddCarScreen> {
               ),
               TextField(
                 controller: _modelController..text,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Model',
                 ),
               ),
               TextField(
                 controller: _manufacturerController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Manufacturer',
                 ),
               ),
               TextField(
                 controller: _carClassController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Car class',
                 ),
               ),
               TextField(
                 controller: _bodyTypeController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Body type',
                 ),
               ),
               TextField(
                 controller: _manufacturYearController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Manufactur year',
                 ),
               ),
+              ElevatedButton(
+                  child: const Text('Изменить'),
+                  onPressed: () {
+                    BlocProvider.of<CatalogBloc>(context).add(
+                      UpdateCarPost(
+                        id: widget._car!.id,
+                        model: _modelController.text,
+                        manufacturer: _manufacturerController.text,
+                        carClass: _carClassController.text,
+                        bodyType: _bodyTypeController.text,
+                        manufacturYear: _manufacturYearController.text,
+                      ),
+                    );
+                    Navigator.of(context).pop('delete');
+                  }),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.send),
-        onPressed: () => BlocProvider.of<CatalogBloc>(context).add(
-          AddCarPost(
-            model: _modelController.text,
-            manufacturer: _manufacturerController.text,
-            carClass: _carClassController.text,
-            bodyType: _bodyTypeController.text,
-            manufacturYear: _manufacturYearController.text,
-            image: imageFile!.path,
-          ),
-        ),
-      ),
+          child: const Icon(Icons.send),
+          onPressed: () {
+            BlocProvider.of<CatalogBloc>(context).add(
+              AddCarPost(
+                model: _modelController.text,
+                manufacturer: _manufacturerController.text,
+                carClass: _carClassController.text,
+                bodyType: _bodyTypeController.text,
+                manufacturYear: _manufacturYearController.text,
+                image: imageFile!.path,
+              ),
+            );
+            Navigator.of(context).popUntil((route) => route.isFirst);
+          }),
     );
   }
 }

@@ -5,9 +5,7 @@ import 'package:car_catalog/data/models/car_model/car_model.dart';
 import 'package:car_catalog/data/repositories/firebase/ifirebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:injectable/injectable.dart';
 
-@lazySingleton
 class FirebaseRepository implements IFirebaseRepository {
   static const String _carPostsCollectionKey = 'carPosts';
   final FirebaseStorage _firebaseStorage;
@@ -16,18 +14,28 @@ class FirebaseRepository implements IFirebaseRepository {
   FirebaseRepository(this._firebaseStorage, this._firebaseClient);
 
   @override
-  Future<void> createCarPost(CarModel carModel) async {
+  Future<void> createCarPost({
+    required String model,
+    required String manufacturer,
+    required String carClass,
+    required String bodyType,
+    required String imagePath,
+    required String manufacturYear,
+  }) async {
     try {
-      final ref = _firebaseStorage.ref(_carPostsCollectionKey).child('');
-      await ref.putFile(File(carModel.image));
+      final ref = _firebaseStorage.ref(imagePath).child('');
+      await ref.putFile(File(imagePath));
       var b = await ref.getDownloadURL();
-      _firebaseClient.collection(_carPostsCollectionKey).add({
-        'model': carModel.model,
-        'manufacturer': carModel.manufacturer,
-        'carClass': carModel.carClass,
-        'bodyType': carModel.bodyType,
+
+      String id = _firebaseClient.collection(_carPostsCollectionKey).doc().id;
+      _firebaseClient.collection(_carPostsCollectionKey).doc(id).set({
+        'id': id,
+        'model': model,
+        'manufacturer': manufacturer,
+        'carClass': carClass,
+        'bodyType': bodyType,
         'image': b,
-        'manufacturYear': carModel.manufacturYear,
+        'manufacturYear': manufacturYear,
       });
     } on Exception catch (_) {
       throw FirebaseRepositoryException();
@@ -46,14 +54,36 @@ class FirebaseRepository implements IFirebaseRepository {
   }
 
   @override
-  Future<void> deleteCarPost() {
-    // TODO: implement deleteCarPost
-    throw UnimplementedError();
+  Future<void> deleteCarPost(
+    String id,
+  ) async {
+    try {
+      _firebaseClient.collection(_carPostsCollectionKey).doc(id).delete();
+    } on Exception catch (_) {
+      throw FirebaseRepositoryException();
+    }
   }
 
   @override
-  Future<void> updateCarPost() {
-    // TODO: implement updateCarPost
-    throw UnimplementedError();
+  Future<void> updateCarPost({
+    required String id,
+    required String model,
+    required String manufacturer,
+    required String carClass,
+    required String bodyType,
+    required String manufacturYear,
+  }) async {
+    try {
+      _firebaseClient.collection(_carPostsCollectionKey).doc(id).update({
+        'id': id,
+        'model': model,
+        'manufacturer': manufacturer,
+        'carClass': carClass,
+        'bodyType': bodyType,
+        'manufacturYear': manufacturYear,
+      });
+    } on Exception catch (_) {
+      throw FirebaseRepositoryException();
+    }
   }
 }
