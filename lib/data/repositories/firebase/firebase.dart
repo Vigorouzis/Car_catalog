@@ -5,6 +5,7 @@ import 'package:car_catalog/data/models/car_model/car_model.dart';
 import 'package:car_catalog/data/repositories/firebase/ifirebase.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart' as path;
 
 class FirebaseRepository implements IFirebaseRepository {
   static const String _carPostsCollectionKey = 'carPosts';
@@ -23,7 +24,7 @@ class FirebaseRepository implements IFirebaseRepository {
     required String manufacturYear,
   }) async {
     try {
-      final ref = _firebaseStorage.ref(imagePath).child('');
+      final ref = _firebaseStorage.ref(path.basename(imagePath)).child('');
       await ref.putFile(File(imagePath));
       var b = await ref.getDownloadURL();
 
